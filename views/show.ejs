@@ -1,0 +1,62 @@
+<%- include("partials/header") %>
+
+<Center>
+	<h1 class="py-5 bg-warning">
+		Description - <%= campground.description %>
+	</h1>
+	<h1 class="py-5 bg-primary">
+		<%= campground.name %>
+	</h1>
+	<img class="py-5" src="<%= campground.image %>" width="750" height="500">
+	<h3 class="bg-primary pb-3 my-2">
+		
+			 <strong> Created by - <em> <%= campground.author.username %> </em> </strong>
+
+	</h3>
+	
+	<p>
+		<a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-success">Comment</a>
+	</p>
+	
+	<% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+		<p>
+		<a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
+	</p>
+	
+	<form class="pb-3" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+		<button class="btn  btn-danger">
+			
+			DELETE!
+		</button>
+	</form>
+	<% } %>
+	
+	
+	<%
+	campground.comments.forEach(function(comment){%>
+	
+	<div class="bg-warning">
+		<p>
+			<strong> <%= comment.author.username %> - </strong> <%= comment.text %>
+	    </p>
+		
+		<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+			<span>
+			<a class="pull-right btn btn-xs btn-success" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+			Edit
+		</a>
+		 <form class="py-2" action="<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" _method="POST">
+			 <input type="submit" class="btn btn-xs btn-danger" value="delete">
+		 	 
+		 </form>
+		</span>
+		<% } %>
+		
+		 
+		 
+	</div>
+		 
+	<%})
+	%>
+	
+</Center>

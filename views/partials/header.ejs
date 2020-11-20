@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Yelcamp</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+	<body>
+		   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" href="/" style=" background: #7a2828;  color: cyan; ">YelpCamp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/campgrounds" style=" background: #7a2828;  color: cyan;">Campgrounds <span class="sr-only">(current)</span></a>
+      </li>
+		<ul class="nav navbar-nav float-right ">
+			<% if(!currentUser){ %>
+				<li class="nav-item">
+            <a class="nav-link" href="/login" style=" background: #7a2828; color: cyan;">Login</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/register" style=" background: #7a2828;  color: cyan; ">Sign Up</a>
+            </li>
+			<% } else { %>
+			<li class="nav-item"><a href="#" style=" background: #7a2828;  color: cyan; ">Signed In As <%= currentUser.username %></a></li>
+				<li class="nav-item">
+            <a class="nav-link" href="/logout" style=" background: #7a2828;  color: cyan; ">Logout</a>
+            </li>
+			<% } %>
+			 
+             
+		</ul>
+    </ul>
+  </div>
+</nav>
+		
+		
+		<% if(error && error.length > 0){ %>
+		<div class="container">
+			<div class="alert alert-danger" role="alert">
+			<h1>
+			<%= error %>	
+		    </h1>
+		    </div>
+		</div>
+			
+		<% } %>
+		
+		<% if(success && success.length > 0){%>
+			<div class="container">
+				<div class="alert alert-success" role="alert">
+			<h1>
+			<%= success %>	
+		    </h1>
+		    </div>
+				
+		    </div>
+		<%} %>
+		
+		
+		
+		 
+		 
+		 
+		
+		
+	 

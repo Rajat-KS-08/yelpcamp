@@ -1,0 +1,49 @@
+<%- include("partials/header") %>
+
+ 
+
+<header class="container jumbotron bg-primary">
+	<div class="container justify-content-centre">
+		<h1 class="display-3">
+	Welcome to Campgrounds Page...
+    </h1>
+	<p>
+		View our hand-picked campgrounds from all over the world.
+	</p>
+	<p>
+		<a class="btn btn-warning btn-large" href="/campgrounds/new">Go to add a new Campground</a>
+
+	</p>
+	</div>
+	 
+</header>
+
+<div class="container">
+	 
+	<div class="row text-center">
+		<%
+        campgrounds.forEach(function(campgrounds){%>
+		<div class="col-md-4 col-sm-6">
+			<div class="thumbnail justify-content-center">
+				 <img src="<%= campgrounds.image %>" width="300" height="180">
+			</div>
+			<div class="caption">
+				<h4>
+				 <%= campgrounds.name %>
+			    </h4> 
+			</div>
+			<p>
+				<a href="/campgrounds/<%= campgrounds._id %>" class="btn btn-primary">More  info</a>
+			</p>
+		</div>
+		<%});%>
+	</div>
+	
+	 
+	
+	
+</div>
+ 
+
+ 
+ 
